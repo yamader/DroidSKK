@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:background="@drawable/key_bg"
     >
-    <jp.deadend.noname.skk.KeyboardView
+    <net.dyama.droidskk.KeyboardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

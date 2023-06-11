@@ -2,7 +2,7 @@
 <PreferenceScreen
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:title="@string/label_pref_hardkeyboard">
-    <jp.deadend.noname.skk.SetKeyPreference
+    <net.dyama.droidskk.SetKeyPreference
         app:key="@string/prefkey_kana_key"
         app:title="かなキー"
         app:summary="かなモードに移行するキー"
@@ -18,7 +18,7 @@
         app:defaultValue="true"
         app:iconSpaceReserved="false"
         />
-    <jp.deadend.noname.skk.SetKeyPreference
+    <net.dyama.droidskk.SetKeyPreference
         app:key="@string/prefkey_cancel_key"
         app:title="キャンセルキー"
         app:dialogTitle="Press a key ..."

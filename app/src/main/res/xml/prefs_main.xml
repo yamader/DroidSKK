@@ -24,19 +24,19 @@
     <Preference
         app:title="@string/label_dicmanager_activity" >
         <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="jp.deadend.noname.skk"
-            android:targetClass="jp.deadend.noname.skk.SKKDicManager" />
+            android:targetPackage="net.dyama.droidskk"
+            android:targetClass="net.dyama.droidskk.SKKDicManager" />
     </Preference>
     <Preference
         app:title="@string/label_dictool_activity" >
         <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="jp.deadend.noname.skk"
-            android:targetClass="jp.deadend.noname.skk.SKKUserDicTool" />
+            android:targetPackage="net.dyama.droidskk"
+            android:targetClass="net.dyama.droidskk.SKKUserDicTool" />
     </Preference>
     <Preference
-        app:fragment="jp.deadend.noname.skk.SKKSettingsActivity$SettingsHardKeyFragment"
+        app:fragment="net.dyama.droidskk.SKKSettingsActivity$SettingsHardKeyFragment"
         app:title="@string/label_pref_hardkeyboard"/>
     <Preference
-        app:fragment="jp.deadend.noname.skk.SKKSettingsActivity$SettingsSoftKeyFragment"
+        app:fragment="net.dyama.droidskk.SKKSettingsActivity$SettingsSoftKeyFragment"
         app:title="@string/label_pref_softkeyboard"/>
 </PreferenceScreen>
