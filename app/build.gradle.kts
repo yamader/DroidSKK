@@ -73,6 +73,17 @@ android {
 
 dependencies {
   implementation(files("libs/jdbm-1.0.jar"))
+  implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.appcompat)
+  implementation(libs.androidx.core)
+  implementation(libs.androidx.lifecycle.runtime)
   implementation(libs.androidx.preference)
+
+  implementation(platform(libs.compose.bom))
+  implementation(libs.compose.material3)
+  implementation(libs.compose.ui)
+  implementation(libs.compose.ui.graphics)
+  implementation(libs.compose.ui.tooling.preview)
+  debugImplementation(libs.compose.ui.test.manifest)
+  debugImplementation(libs.compose.ui.tooling)
 }
