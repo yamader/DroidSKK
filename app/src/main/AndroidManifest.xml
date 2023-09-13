@@ -6,10 +6,6 @@
     <intent>
       <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
     </intent>
-    <intent>
-      <action android:name="com.adamrocker.android.simeji.ACTION_INTERCEPT" />
-      <category android:name="com.adamrocker.android.simeji.REPLACE" />
-    </intent>
   </queries>
   <application
     android:name=".SKKApplication"
@@ -46,10 +42,6 @@
       android:name=".SKKDicManager"
       android:label="@string/label_dicmanager_activity"
       android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-    <activity
-      android:name=".SKKMushroom"
-      android:label="@string/label_mushroom"
-      android:theme="@style/Theme.AppCompat.Light.Dialog" />
     <activity
       android:name=".SKKSpeechRecognitionResultsList"
       android:label="@string/label_speech_recognition_results"

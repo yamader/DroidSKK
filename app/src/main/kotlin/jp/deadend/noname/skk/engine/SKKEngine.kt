@@ -278,23 +278,6 @@ class SKKEngine(
         }
     }
 
-    fun prepareToMushroom(clip: String): String {
-        val str = if (state === SKKKanjiState || state === SKKAbbrevState) {
-            mKanjiKey.toString()
-        } else {
-            clip
-        }
-
-        if (state.isTransient) {
-            changeState(SKKHiraganaState)
-        } else {
-            reset()
-            mRegistrationStack.clear()
-        }
-
-        return str
-    }
-
     // 小文字大文字変換，濁音，半濁音に使う
     fun changeLastChar(type: String) {
         when {

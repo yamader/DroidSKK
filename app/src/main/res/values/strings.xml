@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="ime_name">SKK for Android</string>
-	<string name="label_mushroom">マッシュルーム</string>
 	<string name="label_speech_recognition_results">認識結果</string>
 	<string name="label_pref_activity">SKK for Androidの設定</string>
 	<string name="label_pref_softkeyboard">ソフトウェアキーボードの設定</string>
@@ -39,7 +38,6 @@
 	<string name="error_user_dic">ユーザー辞書が開けません。設定画面から、ユーザー辞書を初期化してみてください</string>
 	<string name="error_open_user_dic">ユーザー辞書を開くときにエラーが発生しました。初期化してもよろしいですか？</string>
 	<string name="error_file_load">ファイル読みこみに失敗しました: %1$s</string>
-	<string name="error_no_mushroom">マッシュルームアプリがひとつもインストールされていません</string>
 	<string name="error_write_to_external_storage">テキスト形式の保存に失敗しました</string>
 	<string name="error_text_dic_coding">UTF-8のファイルではないようです</string>
 	<string name="error_dic_exists">この辞書はすでに存在します: %1$s</string>

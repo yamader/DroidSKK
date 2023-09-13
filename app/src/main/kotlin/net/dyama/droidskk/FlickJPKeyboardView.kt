@@ -639,7 +639,6 @@ class FlickJPKeyboardView : KeyboardView, KeyboardView.OnKeyboardActionListener 
             mService.keyDownUp(KeyEvent.KEYCODE_SEARCH)
             return true
         } else if (code == KEYCODE_FLICK_JP_SPACE) {
-            mService.sendToMushroom()
             return true
         }
 

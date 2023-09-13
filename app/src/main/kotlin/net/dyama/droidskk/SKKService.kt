@@ -60,15 +60,6 @@ class SKKService : InputMethodService() {
 
     private var mPendingInput: String? = null
 
-    private val mMushroomReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            mPendingInput = intent?.getStringExtra(SKKMushroom.REPLACE_KEY)
-//                if (mMushroomWord != null) {
-//                    val cm = getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
-//                    cm.setText(mMushroomWord)
-//                }
-        }
-    }
     private val mReloadReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             when (intent?.getStringExtra(KEY_COMMAND)) {
@@ -182,9 +173,6 @@ class SKKService : InputMethodService() {
 
         mEngine = SKKEngine(this@SKKService, dics, userDic!!)
 
-        val filter = IntentFilter(SKKMushroom.ACTION_BROADCAST)
-        filter.addCategory(SKKMushroom.CATEGORY_BROADCAST)
-        registerReceiver(mMushroomReceiver, filter)
         registerReceiver(mReloadReceiver, IntentFilter(ACTION_COMMAND))
 
         mSpeechRecognizer.setRecognitionListener(object : RecognitionListener {
@@ -452,7 +440,6 @@ class SKKService : InputMethodService() {
 
     override fun onDestroy() {
         mEngine.commitUserDictChanges()
-        unregisterReceiver(mMushroomReceiver)
         unregisterReceiver(mReloadReceiver)
 
         super.onDestroy()
@@ -697,17 +684,6 @@ class SKKService : InputMethodService() {
     fun onFinishRegister() {
         val flick = mFlickJPInputView ?: return
         if (mUseSoftKeyboard) flick.setRegisterMode(false)
-    }
-
-    fun sendToMushroom() {
-        val clip = (getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager)
-                        .primaryClip?.getItemAt(0)?.coerceToText(this) ?: ""
-        val str = mEngine.prepareToMushroom(clip.toString())
-
-        val mushroom = Intent(this, SKKMushroom::class.java)
-        mushroom.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        mushroom.putExtra(SKKMushroom.REPLACE_KEY, str)
-        startActivity(mushroom)
     }
 
     fun recognizeSpeech() {
