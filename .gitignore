@@ -1,9 +1,11 @@
-build
 .gradle
+build
+
 .externalNativeBuild
 .cxx
 
-/local.properties
-/key.properties
-
 /.idea
+/captures
+
+/local.properties
+/keystore.properties

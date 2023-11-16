@@ -1,5 +1,5 @@
 import java.io.FileNotFoundException
-import java.util.*
+import java.util.Properties
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
@@ -23,16 +23,16 @@ android {
 
   signingConfigs {
     try {
-      val keyPropsFile = rootProject.file("key.properties")
+      val keyPropsFile = rootProject.file("keystore.properties")
       val keyProps = Properties().apply {
         keyPropsFile.inputStream().use { load(it) }
       }
 
       create("release") {
-        storeFile = file(keyProps["storeFile"] as String)
-        storePassword = keyProps["storePassword"] as String
         keyAlias = keyProps["keyAlias"] as String
         keyPassword = keyProps["storePassword"] as String
+        storeFile = file(keyProps["storeFile"] as String)
+        storePassword = keyProps["storePassword"] as String
       }
     } catch(e: FileNotFoundException) {
       // key.propertiesが無いとkeyPropsFile.inputStream()がコケる
@@ -43,12 +43,15 @@ android {
     release {
       isMinifyEnabled = true
       isShrinkResources = true
-      proguardFiles(getDefaultProguardFile("proguard-android.txt"))
       signingConfig = try {
         signingConfigs.getByName("release")
       } catch(e: UnknownDomainObjectException) {
         null // signingConfigが無いとき
       }
+
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+      )
     }
   }
 
@@ -59,15 +62,25 @@ android {
 
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8.toString()
+    freeCompilerArgs += listOf(
+      "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+    )
   }
 
   buildFeatures {
     buildConfig = true
+    compose = true
     viewBinding = true
   }
 
   composeOptions {
     kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+  }
+
+  packaging {
+    resources {
+      excludes += "/META-INF/{AL2.0,LGPL2.1}"
+    }
   }
 }
 
@@ -84,6 +97,7 @@ dependencies {
   implementation(libs.compose.ui)
   implementation(libs.compose.ui.graphics)
   implementation(libs.compose.ui.tooling.preview)
+
   debugImplementation(libs.compose.ui.test.manifest)
   debugImplementation(libs.compose.ui.tooling)
 }
