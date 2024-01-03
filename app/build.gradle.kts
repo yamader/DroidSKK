@@ -62,7 +62,8 @@ android {
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8.toString()
     freeCompilerArgs += listOf(
-      "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+      "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+      "-opt-in=androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi",
     )
   }
 
@@ -83,6 +84,7 @@ dependencies {
 
   implementation(platform(libs.compose.bom))
   implementation(libs.compose.material3)
+  implementation(libs.compose.material3.windowsizeclass)
   implementation(libs.compose.ui)
   implementation(libs.compose.ui.graphics)
 }

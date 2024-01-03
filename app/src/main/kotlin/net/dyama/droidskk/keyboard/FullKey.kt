@@ -1,4 +1,4 @@
-package net.dyama.droidskk.ime
+package net.dyama.droidskk.keyboard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

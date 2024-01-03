@@ -50,7 +50,7 @@ fun DroidSKKTheme(
 
     // Service
     (view.context as? InputMethodService)?.window?.also { dialog ->
-      dialog.window?.navigationBarColor = Color.Transparent.toArgb()
+      dialog.window?.navigationBarColor = colorScheme.surface.toArgb()
     }
   }
 
