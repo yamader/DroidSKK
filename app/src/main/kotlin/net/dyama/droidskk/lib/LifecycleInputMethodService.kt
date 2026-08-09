@@ -13,7 +13,7 @@ import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 
-open class LifecycleInputMethodService: InputMethodService(),
+open class LifecycleInputMethodService : InputMethodService(),
   LifecycleOwner, ViewModelStoreOwner, SavedStateRegistryOwner {
 
   // 必須のメンバ

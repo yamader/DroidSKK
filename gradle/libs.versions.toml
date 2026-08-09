@@ -4,11 +4,14 @@ kotlin = "2.4.10"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.13.0" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version = "2026.06.01" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version = "2026.08.00" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version = "1.2.1" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version = "2.9.8" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.11.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

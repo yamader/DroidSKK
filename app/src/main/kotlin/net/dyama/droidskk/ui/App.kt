@@ -12,8 +12,8 @@ fun App() {
 
   NavHost(
     navController = navController,
-    startDestination = Routes.Settings,
+    startDestination = Routes.settings,
   ) {
-    composable(Routes.Settings) { SettingsScreen(navController) }
+    composable(Routes.settings) { SettingsScreen(navController) }
   }
 }

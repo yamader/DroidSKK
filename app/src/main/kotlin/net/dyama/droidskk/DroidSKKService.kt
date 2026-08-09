@@ -1,41 +1,38 @@
 package net.dyama.droidskk
 
-import android.util.DisplayMetrics
+import android.content.Context
+import android.inputmethodservice.InputMethodService
 import android.view.View
-import android.view.inputmethod.InputConnection
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.ui.platform.ComposeView
-import net.dyama.droidskk.ui.keyboard.Keyboard
-import net.dyama.droidskk.ui.DroidSKKTheme
 import net.dyama.droidskk.lib.LifecycleInputMethodService
-import java.lang.ref.WeakReference
+import net.dyama.droidskk.ui.DroidSKKTheme
+import net.dyama.droidskk.ui.Keyboard
 
-private var DroidSKKServiceRef = WeakReference<DroidSKKService>(null)
+val Context.serviceContainer get() = (this as DroidSKKService).container
+val Context.currentInputConnection get() = (this as InputMethodService).currentInputConnection
 
 class DroidSKKService : LifecycleInputMethodService() {
-  companion object {
-    fun displayMetrix(): DisplayMetrics? = DroidSKKServiceRef.get()?.resources?.displayMetrics
+  lateinit var container: ServiceContainer private set
 
-    fun currentInputConnection(): InputConnection? =
-      DroidSKKServiceRef.get()?.currentInputConnection
+  override fun onCreate() {
+    super.onCreate()
+    container = ServiceContainer(this)
+  }
+
+  override fun onCreateInputView(): View {
+    installLifecycle()
+    return view
   }
 
   private val view by lazy {
     ComposeView(this).apply {
+      consumeWindowInsets = false
       setContent {
         DroidSKKTheme {
           Keyboard()
         }
       }
     }
-  }
-
-  override fun onCreate() {
-    super.onCreate()
-    DroidSKKServiceRef = WeakReference(this)
-  }
-
-  override fun onCreateInputView(): View {
-    installLifecycle()
-    return view
   }
 }

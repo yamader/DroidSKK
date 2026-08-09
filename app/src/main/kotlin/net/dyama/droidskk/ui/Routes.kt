@@ -1,5 +1,5 @@
 package net.dyama.droidskk.ui
 
 object Routes {
-  const val Settings = "settings"
+  const val settings = "settings"
 }
