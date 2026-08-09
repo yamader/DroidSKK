@@ -1,4 +1,4 @@
-package net.dyama.droidskk.keyboard
+package net.dyama.droidskk.ui.keyboard
 
 import androidx.compose.runtime.Composable
 

@@ -1,4 +1,4 @@
-package net.dyama.droidskk.engine
+package net.dyama.droidskk.lib.engine
 
 class SKKState {
   val buf = StringBuilder()
